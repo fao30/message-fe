@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
-import { postMessage } from "../api/api";
-import { TextField, Button, Box } from "@mui/material";
+import { postMessage } from "../../shared/api/api";
+import { TextField, Button } from "@mui/material";
 
 const MessageInput = () => {
   const [content, setContent] = useState("");
@@ -21,18 +21,19 @@ const MessageInput = () => {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} display="flex" mt={2}>
+    <form onSubmit={handleSubmit}>
       <TextField
-        fullWidth
-        variant="outlined"
-        placeholder="Enter your message"
+        type="text"
         value={content}
         onChange={(e) => setContent(e.target.value)}
+        placeholder="Enter your message"
+        fullWidth
+        margin="normal"
       />
-      <Button type="submit" variant="contained" color="primary" sx={{ ml: 2 }}>
+      <Button type="submit" variant="contained" color="primary">
         Send
       </Button>
-    </Box>
+    </form>
   );
 };
 
